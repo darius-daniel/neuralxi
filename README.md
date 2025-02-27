@@ -1,2 +1,2 @@
-# neuralxi
+# Neuralxi
 FPL Bot - Optimizing You XI, One Algorithm at a Time.
