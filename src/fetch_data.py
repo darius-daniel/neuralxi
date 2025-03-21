@@ -15,7 +15,7 @@ def get_general_fpl_data() -> Optional[Dict[str, Any]]:
     """
     logging.info("Fetching general FPL data")
     try:
-        res = requests.get("https://fantasy.premierleague.com/api/bootstrap-static/", timeout=15)
+        res = requests.get("https://fantasy.premierleague.com/api/bootstrap-static/", timeout=10)
         res.raise_for_status()
         data = res.json()
         logging.info(f"Fetched general FPL data: {data}")
@@ -37,7 +37,7 @@ def get_player_data(player_id: str) -> Optional[Dict[str, Any]]:
     """
     logging.info(f"Fetching player data for {player_id}")
     try:
-        res = requests.get(f"https://fantasy.premierleague.com/api/{player_id}", timeout=15)
+        res = requests.get(f"https://fantasy.premierleague.com/api/element-summary/{player_id}/", timeout=10)
         res.raise_for_status()
         return res.json()
     except requests.exceptions.JSONDecodeError:
@@ -55,7 +55,7 @@ def get_fixtures() -> Optional[Dict[str, Any]]:
     """
     logging.info("Fetching fixtures data")
     try:
-        res = requests.get("https://fantasy.premierleague.com/api/fixtures/", timeout=15)
+        res = requests.get("https://fantasy.premierleague.com/api/fixtures/", timeout=10)
         res.raise_for_status()
         return res.json()
     except requests.exceptions.JSONDecodeError:
@@ -74,7 +74,7 @@ def get_game_week_data(game_week: int | str) -> Optional[Dict[str, Any]]:
     """
     logging.info(f"Fetching game week data for {game_week}")
     try:
-        res = requests.get(f"https://fantasy.premierleague.com/api/event/{game_week}/live/", timeout=15)
+        res = requests.get(f"https://fantasy.premierleague.com/api/event/{game_week}/live/", timeout=10)
         res.raise_for_status()
         return res.json()
     except requests.exceptions.JSONDecodeError:
@@ -93,7 +93,7 @@ def get_team_data(team_id: int) -> Optional[Dict[str, Any]]:
     """
     logging.info(f"Fetching team data for {team_id}")
     try:
-        res = requests.get(f"https://fantasy.premierleague.com/api/team/{team_id}/", timeout=15)
+        res = requests.get(f"https://fantasy.premierleague.com/api/team/{team_id}/", timeout=10)
         res.raise_for_status()
         return res.json()
     except requests.exceptions.JSONDecodeError:
@@ -102,3 +102,7 @@ def get_team_data(team_id: int) -> Optional[Dict[str, Any]]:
         logging.error(f"Could not fetch data for team {team_id}: {e}")
 
     return None
+
+
+data = get_general_fpl_data()
+print(data.keys())
