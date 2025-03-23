@@ -5,7 +5,7 @@ from typing import Optional, Dict, Any
 import logging
 import requests
 
-logging.basicConfig(level=logging.INFO, filename="neuralxi.log")
+logging.basicConfig(level=logging.INFO, filename="../neuralxi.log")
 
 
 def get_general_fpl_data() -> Optional[Dict[str, Any]]:
@@ -102,7 +102,3 @@ def get_team_data(team_id: int) -> Optional[Dict[str, Any]]:
         logging.error(f"Could not fetch data for team {team_id}: {e}")
 
     return None
-
-
-data = get_general_fpl_data()
-print(data.keys())
