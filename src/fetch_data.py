@@ -88,7 +88,7 @@ def get_game_week_data(game_week: int | str) -> Optional[Dict[str, Any]]:
 def get_team_data(team_id: int) -> Optional[Dict[str, Any]]:
     """
     Fetch data for a specific team
-    :param team_id:
+    :param team_id: ID of the team
     :return: JSON data if successful, None if the request fails
     """
     logging.info(f"Fetching team data for {team_id}")

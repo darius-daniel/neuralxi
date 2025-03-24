@@ -2,12 +2,14 @@
 """
 Entry point for the project
 """
-import pandas as pd
-
+from src.process_data import create_player_dataframe
 from src.fetch_data import get_general_fpl_data
 
 MY_TEAM_ID = 7777090
 
 
 if __name__ == "__main__":
-    pass
+    fpl_data = get_general_fpl_data()
+    if fpl_data:
+        df = create_player_dataframe(fpl_data)
+        print(df.head())
